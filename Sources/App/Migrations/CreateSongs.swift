@@ -1,14 +1,21 @@
+//
+//  CreateSongs.swift
+//  
+//
+//  Created by Christopher DeVito on 2/7/22.
+//
+
 import Fluent
 
-struct CreateTodo: Migration {
+struct CreateSongs: Migration {
     func prepare(on database: Database) -> EventLoopFuture<Void> {
-        return database.schema("todos")
+        return database.schema("songs")
             .id()
             .field("title", .string, .required)
             .create()
     }
 
     func revert(on database: Database) -> EventLoopFuture<Void> {
-        return database.schema("todos").delete()
+        return database.schema("songs").delete()
     }
 }
